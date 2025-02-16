@@ -81,4 +81,18 @@ FROM
         
     - When displaying the average prices, use ROUND() to hide decimals. */
 
-SELECT AVG(price)
+SELECT 
+    ROUND(AVG(t.price), 0) AS Average_price,
+    t.pub_id,
+    t.`type`,
+    CASE
+        WHEN price <= 5 THEN 'super low'
+        WHEN price <= 10 AND price > 5 THEN 'low'
+        WHEN price <= 15 AND price > 10 THEN 'medium'
+        ELSE 'high'
+    END AS price_categories
+FROM
+    titles AS t
+WHERE
+    `type` IN ('business' , 'trad_cook', 'psychology')
+GROUP BY t.pub_id , t.`type` , price_categories;
