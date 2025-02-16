@@ -56,7 +56,7 @@ SELECT pub_id FROM titles;
 SELECT 
     stor_id, SUM(qty) AS total_sales
 FROM
-    SALES
+    sales
 GROUP BY stor_id
 ORDER BY total_sales DESC
 LIMIT 3;
@@ -80,10 +80,9 @@ SELECT
     pub_id, type, COUNT(*) AS books_per_type
 FROM
     titles
-GROUP BY pub_id , `type`
+GROUP BY pub_id, `type`
 ORDER BY books_per_type;
 
-SELECT *FROM titles;
 
 /* 7. Add the average price of each publisher - book type combination from your
    previous query */
@@ -110,8 +109,8 @@ SELECT
 FROM
     titles
 GROUP BY pub_id , `type`
-HAVING AVG(price) > 12
-ORDER BY books_per_type;
+HAVING avg_price > 12
+ORDER BY avg_price;
 
 /* 9. Order the results of your previous query by these two criteria:
       1. Count of books, descendingly
@@ -122,7 +121,7 @@ SELECT
 FROM
     titles
 GROUP BY pub_id , `type`
-HAVING AVG(price) > 12
+HAVING avg_price > 12
 ORDER BY books_per_type DESC, avg_price DESC;
 
 
@@ -136,7 +135,7 @@ SELECT
     state, city, SUM(contract) AS sum_contracts
 FROM
     authors
-GROUP BY state , city
+GROUP BY city, state
 HAVING sum_contracts >=2
 ORDER BY sum_contracts;
 
