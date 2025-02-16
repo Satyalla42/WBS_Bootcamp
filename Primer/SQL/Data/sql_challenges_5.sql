@@ -37,7 +37,7 @@ SELECT
 FROM
     titles
 WHERE
-    title LIKE ('%cooking%');
+    title LIKE '%cooking%';
 
 
 -- 2. Select all titles that start with the word "The"
@@ -47,7 +47,7 @@ SELECT
 FROM
     titles
 WHERE
-    title LIKE ('The%');
+    title LIKE 'The%';
 
 
 /* 3. Select the full names (first and last name) of authors whose last name
@@ -58,7 +58,7 @@ SELECT
 FROM
     authors
 WHERE
-    au_lname LIKE ('S%');
+    au_lname LIKE 'S%';
 
 /* 4. Select the name and address of all stores located in an Avenue
    (its address ends with "Ave.") */
@@ -68,7 +68,7 @@ SELECT
 FROM
     stores
 WHERE
-    stor_address LIKE ('%Ave.');
+    stor_address LIKE '%Ave.';
 
 /* 5. Select the name and address of all stores located in an Avenue or in a
    Street (address ended in "St.") */
@@ -78,8 +78,8 @@ SELECT
 FROM
     stores
 WHERE
-    stor_address LIKE ('%Ave.')
-        OR stor_address LIKE ('%ST.');
+    stor_address LIKE '%Ave.'
+        OR stor_address LIKE '%ST.';
 
 
 /* 6. Look at the "employee" table (select all columns to explore the raw data):
@@ -109,6 +109,12 @@ WHERE
    'ing', so this should be included; 'sewing' has only 3 characters before the
    'ing', so this shouldn't be included. */
 
-SELECT * FROM titles WHERE title LIKE ("%____ing%");
+SELECT 
+    *
+FROM
+    titles
+WHERE
+    title LIKE '____ing%'
+        OR title LIKE '% ____ing%';
 
 SELECT * FROM titles;
