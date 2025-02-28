@@ -40,13 +40,23 @@ WHERE
 /* 2. Using "IN", select all titles of type "psychology", "mod_cook" and
 "trad_cook" */
 
-SELECT title FROM titles WHERE `type` IN ("psychology", "mod_cook", "trad_cook");
+SELECT 
+    title
+FROM
+    titles
+WHERE
+    `type` IN ('psychology' , 'mod_cook', 'trad_cook');
 
 
 /* 3. Select all the authors from the author table that do not come from the
 cities Salt Lake City, Ann Arbor, and Oakland. */
 
-SELECT * FROM authors WHERE city NOT IN ("Lake City", "Ann Arbor", "Oakland");
+SELECT 
+    *
+FROM
+    authors
+WHERE
+    city NOT IN ('Lake City' , 'Ann Arbor', 'Oakland');
 
 /* The differences between =, LIKE and IN
 
@@ -68,17 +78,32 @@ https://www.w3schools.com/sql/sql_between.asp
 /* 4. Select all the order numbers with a quantity sold between 25 and 45 from
    the table sales */
 
-SELECT  ord_num FROM sales WHERE qty BETWEEN 25 AND 45;
+SELECT 
+    ord_num
+FROM
+    sales
+WHERE
+    qty BETWEEN 25 AND 45;
 
 
 -- 5. Select all the orders between 1993-03-11 and 1994-09-13
 
-SELECT * FROM SALES WHERE ord_date BETWEEN "1993-03-11" AND "1994-09-13";
+SELECT 
+    *
+FROM
+    SALES
+WHERE
+    ord_date BETWEEN '1993-03-11' AND '1994-09-13';
 
 
 /* 6. Select all job descriptions with a maximum level ("max_lvl") between 150
      and 200. */
 
 
-SELECT job_desc FROM JOBS WHERE max_lvl BETWEEN 150 AND 200; 
+SELECT 
+    job_desc
+FROM
+    JOBS
+WHERE
+    max_lvl BETWEEN 150 AND 200; 
 
