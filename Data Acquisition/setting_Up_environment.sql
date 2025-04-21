@@ -59,8 +59,5 @@ DROP TABLE weather;
 TRUNCATE TABLE weather;
 
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Sematty25';
-FLUSH PRIVILEGES;
-SELECT user, host, plugin FROM mysql.user;
 
 
