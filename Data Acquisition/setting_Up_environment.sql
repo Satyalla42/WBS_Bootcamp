@@ -19,6 +19,7 @@ CREATE TABLE Cities (
     Country VARCHAR(255),
     Longitude DECIMAL(9,6) NOT NULL,
 	Latitude DECIMAL(9,6) NOT NULL,
+    Airport_Iata_code VARCHAR(255),
     PRIMARY KEY (City_id) -- Primary key to uniquely identify each author
 );
 
@@ -48,15 +49,33 @@ CREATE TABLE Weather (
     FOREIGN KEY (City_id) REFERENCES Cities(City_id)
 );
 
+CREATE TABLE Flights (
+Flights_id INT AUTO_INCREMENT,
+City_id INT,
+Iata VARCHAR(255),
+Number VARCHAR(255),
+Status VARCHAR(255),
+Departure_airport_icao VARCHAR(255),
+Departure_airport_name VARCHAR(255),
+Arrival_scheduledtime_local DATETIME,
+PRIMARY KEY (Flights_id),
+FOREIGN KEY (City_id) REFERENCES Cities(City_id)
+);
+
+
+#for testing:
+TRUNCATE TABLE weather; #removes the content of the table but not the schema 
+
 SELECT * FROM cities;
 SELECT * FROM population;
 SELECT * FROM weather;
+SELECT * FROM Flights;
 DROP Table cities;
 DROP TABLE population;
 DROP TABLE weather;
+DROP TABLE Flights;
 
-#for testing:
-TRUNCATE TABLE weather;
+
 
 
 
