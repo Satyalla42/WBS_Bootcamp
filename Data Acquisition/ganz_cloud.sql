@@ -1,3 +1,10 @@
+/***************************
+Setting up the environment
+***************************/
+
+-- Drop the database if it already exists
+DROP DATABASE IF EXISTS gans_cloud;
+
 -- Create the database
 CREATE DATABASE gans_cloud;
 
@@ -7,12 +14,13 @@ USE gans_cloud;
 
 
 CREATE TABLE Cities (
-    City_id INT AUTO_INCREMENT, -- Automatically generated ID for each author
-    City_Name VARCHAR(255) NOT NULL, -- Name of the author
+    City_id INT AUTO_INCREMENT, -- Automatically generated ID 
+    City VARCHAR(255) NOT NULL, -- Name of the author
     Country VARCHAR(255),
     Longitude DECIMAL(9,6) NOT NULL,
 	Latitude DECIMAL(9,6) NOT NULL,
-    PRIMARY KEY (City_id) -- Primary key to uniquely identify each author
+    Airport_Iata_code VARCHAR(255) UNIQUE,
+    PRIMARY KEY (City_id) -- Primary key UNIQUE,
 );
 
 
@@ -41,4 +49,29 @@ CREATE TABLE Weather (
     FOREIGN KEY (City_id) REFERENCES Cities(City_id)
 );
 
+CREATE TABLE Flights (
+Flights_id INT AUTO_INCREMENT,
+Airport_Iata_Code VARCHAR(255),
+Number VARCHAR(255),
+Status VARCHAR(255),
+Departure_airport_icao VARCHAR(255),
+Departure_airport_name VARCHAR(255),
+Arrival_scheduledtime_local DATETIME,
+PRIMARY KEY (Flights_id),
+FOREIGN KEY (Airport_Iata_code) REFERENCES Cities(Airport_Iata_code)
+);
+
+
+#for testing:
+TRUNCATE TABLE Cities; #removes the content of the table but not the schema 
+TRUNCATE TABLE Weather;
+TRUNCATE TABLE Flights;
+
 SELECT * FROM Cities;
+SELECT * FROM Population;
+SELECT * FROM Weather;
+SELECT * FROM Flights;
+DROP Table Cities;
+DROP TABLE Population;
+DROP TABLE Weather;
+DROP TABLE Flights;
